@@ -13,18 +13,36 @@ const reverse = (str) => {
 };
 
 // Iterative approach to solving the fibonacci problem
-const fibIter = (n) => {};
-
+const fibIter = (n) => {
+  let sequence = [0, 1];
+  for (let i = 2; i <= n; i++) {
+    sequence.push(sequence[i - 2] + sequence[i - 1]);
+  }
+  return sequence[n];
+};
+console.log(fibIter(1));
 // Recursive fibonacci
-const fibRec = (n) => {};
+const fibRec = (n) => {
+  if (n < 2) {
+    return n;
+  }
+  return fibRec(n - 1) + fibRec(n - 2);
+};
 
 // Return the index of target in arr, or -1 if not found using recursion
 const binarySearch = (arr, target, start = 0, end = arr.length - 1) => {
+  if (start > end) return -1;
   const mid = Math.floor((start + end) / 2);
   if (arr[mid] === target) return mid;
-  if (arr[mid] > target) binarySearch(arr, target, start, (end = mid - 1));
-  if (arr[mid] < target) binarySearch(arr, target, (start = mid + 1), end);
-  if (start > end) return -1;
+  if (arr[mid] > target)
+    return binarySearch(arr, target, start, (end = mid - 1));
+
+  return binarySearch(arr, target, (start = mid + 1), end);
 };
 
 module.exports = { sum, reverse, fibRec, fibIter, binarySearch };
+
+const arr = [2, 4, 6, 8, 10, 12, 14, 16];
+const target1 = 8;
+const target2 = 12;
+const target3 = 7;
