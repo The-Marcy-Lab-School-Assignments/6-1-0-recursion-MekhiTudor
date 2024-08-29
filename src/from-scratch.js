@@ -41,8 +41,3 @@ const binarySearch = (arr, target, start = 0, end = arr.length - 1) => {
 };
 
 module.exports = { sum, reverse, fibRec, fibIter, binarySearch };
-
-const arr = [2, 4, 6, 8, 10, 12, 14, 16];
-const target1 = 8;
-const target2 = 12;
-const target3 = 7;
